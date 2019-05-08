@@ -39,4 +39,6 @@ fun parseExpression(L::L2::Ls) =
 fun stringToIntExpr (S) = 
     eval(parseExpression(explode(S)));
 
+fun summationWithFunction(fntn,n,i) = if i = n then fntn(i) else fntn(i) + summationWithFunction(fntn,n,(i + 1));
+
 
