@@ -3,7 +3,6 @@ datatype expr = Number of int
               | Times of expr * expr 
               | Divide of expr * expr 
               | Subtract of expr * expr
-              | (expr)
 
 fun eval (Number n) = n
  |  eval (Plus (e1, e2)) = eval(e1) + eval(e2)
@@ -17,14 +16,6 @@ fun evalToExpr (Number n) = Number n
  |  evalToExpr (Divide (e1, e2)) = Number(eval(e1) div eval(e2))
  |  evalToExpr (Subtract (e1, e2)) = Number(eval(e1) - eval(e2));
  
-fun charListToExpr (C::[]) = Number(ord(C) - 48)
- |  charListToExpr (C::C2::Cs) =
-    if ord(C2) = 43 then Plus(Number(ord(C) - 48), charListToExpr(Cs))
-    else if ord(C2) = 42 then Times(Number(ord(C) - 48), charListToExpr(Cs))
-    else if ord(C2) = 47 then Divide(Number(ord(C) - 48), charListToExpr(Cs))
-    else if ord(C2) = 45 then Subtract(Number(ord(C) - 48), charListToExpr(Cs))
-    else Number(ord(C) - 48)
-    
 fun parseExpression(L::L2::Ls) =
     let
         fun parSumExpression(L::L2::Ls) =
