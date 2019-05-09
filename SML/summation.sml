@@ -46,6 +46,9 @@ fun stringToIntExpr (S) =
 
 fun replaceValueInCharList (L, n) = map (fn(x) => if x = #"n" then n else x) L;
     
+fun summationExample1 x = (x * (x + 1)) div 2;
+fun summationExample2 x = (x * (x + 1) * ((2 * x) + 1)) div 6;
+
 fun summationWithFunction(fntn,i,n) = if i = n then fntn(i) else fntn(i) + summationWithFunction(fntn,(i + 1),n);
 
 fun summationWithString(str,i,n) = 
