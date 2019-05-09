@@ -46,9 +46,9 @@ fun stringToIntExpr (S) =
 
 fun replaceValueInCharList (L, n) = map (fn(x) => if x = #"n" then n else x) L;
     
-fun summationWithFunction(fntn,n,i) = if i = n then fntn(i) else fntn(i) + summationWithFunction(fntn,n,(i + 1));
+fun summationWithFunction(fntn,i,n) = if i = n then fntn(i) else fntn(i) + summationWithFunction(fntn,(i + 1),n);
 
-fun summationWithString(str, n, i) = 
+fun summationWithString(str,i,n) = 
     if i >= n then stringToIntExpr(implode(replaceValueInCharList(explode(str), chr(i+48)))) 
-    else stringToIntExpr(implode(replaceValueInCharList(explode(str), chr(i+48)))) + summationWithString(str, n, (i + 1));
+    else stringToIntExpr(implode(replaceValueInCharList(explode(str), chr(i+48)))) + summationWithString(str, (i + 1), n);
 
