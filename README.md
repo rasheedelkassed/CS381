@@ -18,3 +18,8 @@ Commom Lisp:
 6) To use the summation function with different formulas or values, add a new line of code of the form '(print (summation #'{nameOfFormulaFunction} {startValue} {endValue}))' and press 'Run it' again.
 
 Java:
+1) Download IntelliJ IDEA from https://www.jetbrains.com/idea/.
+2) Open the SummationJava.iml projet file.
+3) Select the 'Run' menu.
+4) Select the 'Run "SummationExecutor"' option.
+5) To add a new formula you need to create a new object based on the existing examples and modify the formula in the for loop.
