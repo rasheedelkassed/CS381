@@ -2,7 +2,7 @@
 Rasheed El Kassed and Tom Konczol
 
 SML:
-1) Install SML:NJ. 
+1) Install SML:NJ from https://www.smlnj.org/. 
 2) Navigate to the SML directory in your comsole of choice. 
 3) Run SML using the command sml. 
 4) Once sml is started, type in 'use "summation.sml"'.
