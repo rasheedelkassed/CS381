@@ -7,7 +7,7 @@ SML:
 3) Run SML using the command sml. 
 4) Once sml is started, type in 'use "summation.sml"'.
 5) To test it, use the command 'summationWithFunction(fn, i ,n)' where fn is the function, i is the start value, and n is the end value.
-6) Two function are already provided called summationEXample1 and summationExample2.
+6) Two functions are already provided called summationExample1 and summationExample2.
 
 Commom Lisp:
 1) Go to https://rextester.com/l/common_lisp_online_compiler.
@@ -17,5 +17,6 @@ Commom Lisp:
 5) Press 'Run it' to run the code.
 6) To use the summation function with different formulas or values, add a new line of code of the form
 '(print (summation #'{nameOfFormulaFunction} {startValue} {endValue}))'
+and press 'Run it' again.
 
 Java:
