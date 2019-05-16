@@ -16,7 +16,7 @@ Commom Lisp:
 4) Paste the contents of the file to the rextester code form.
 5) Press 'Run it' to run the code.
 6) To use the summation function with different formulas or values, add a new line of code of the form
-'(print (summation #'{nameOfFormulaFunction} {startValue} {endValue}))'
-and press 'Run it' again.
+'(print (summation #'{nameOfFormulaFunction} {startValue} {endValue}))' 
+  and press 'Run it' again.
 
 Java:
