@@ -94,7 +94,15 @@
         (funcall fn i)
     (+ (funcall fn i) (summation fn (+ i 1) n) )))
 
+(defun summation-with-string (str i n)
+    (if (= i n)
+        (parse-expression(lexer(replace-value-in-char-list(explode str) i)))
+    (+ (parse-expression(lexer(replace-value-in-char-list(explode str) i))) (summation-with-string str (+ i 1) n) ))
+)
+
 (print (summationExample1 2))
 (print (summationExample2 2))
 (print (summation #'summationExample1 1 5))
 (print (summation #'summationExample2 1 5))
+
+(print (summation-with-string "1+4+n" 1 5))
