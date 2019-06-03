@@ -1,3 +1,82 @@
+(defvar *number* "100+300/10")
+(defvar *list* '(100 '(PLUS) 200 '(TIMES) 300))
+
+
+(defun explode (number)
+    (coerce number 'list)
+)
+
+(defun lexer-helper (lst)
+    (cond ( (eq (car lst) nil)
+            nil)
+          ( (eq (car lst) #\*)
+            (cons "TIMES" (lexer (cdr lst))))
+          ( (eq (car lst) #\+)
+            (cons "PLUS" (lexer (cdr lst))))
+          ( (eq (car lst) #\-)
+            (cons "MINUS" (lexer (cdr lst))))
+          ( (eq (car lst) #\/)
+            (cons "DIVIDED BY" (lexer (cdr lst))))
+          ( (get-digit 0 lst 1))
+    )
+)
+
+(defun get-digit (p lst n)
+    (if (or (eq lst nil) (not (is-number (car lst))))
+        (cons (* p n) (lexer-helper lst))
+        (get-digit (- (+ (* p 10) (char-code (car lst))) 48) (cdr lst) n)
+    )
+    
+)
+
+(defun lexer (lst)
+    (lexer-helper lst)
+)
+
+(defun is-number (ch)
+    (if (eq ch nil)
+        'f
+        (and (>= (char-code ch) 48) (<= (char-code ch) 57))
+     )
+)
+
+(defun parse-sum-expression (lst)
+    (cond ( (eq (car lst) nil)
+            nil)
+          ( (string= (cadr lst) "PLUS")
+            (+ (car lst) (parse-mul-expression (cddr lst))))
+          ( (string= (cadr lst) "MINUS")
+            (- (car lst) (parse-mul-expression (cddr lst))))
+          ( (parse-mul-expression lst))
+    )
+)
+
+(defun parse-mul-expression (lst)
+    (cond ( (eq (car lst) nil)
+            nil)
+          ( (string= (cadr lst) "TIMES")
+            (* (car lst) (parse-root-expression (cddr lst))))
+          ( (string= (cadr lst) "DIVIDED BY")
+            (/ (car lst) (parse-root-expression (cddr lst))))
+          ( (parse-root-expression lst))
+    )
+)
+
+(defun parse-root-expression (lst)
+    (cond ( (eq (cdr lst) nil)
+            (car lst))
+          ( (parse-expression lst))
+    )
+)
+
+(defun parse-expression (lst)
+    (parse-sum-expression lst)
+)
+
+(print(explode *number*))
+(print(lexer(explode *number*)))
+(print(parse-expression(lexer(explode *number*))))
+
 (defun summationExample1 (x)
     (/ (* (+ x 1) x) 2))
 
