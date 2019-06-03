@@ -1,5 +1,6 @@
 (defvar *number* "100+300/10")
 (defvar *list* '(100 '(PLUS) 200 '(TIMES) 300))
+(defvar *nstring* "100+n")
 
 
 (defun explode (number)
@@ -73,9 +74,14 @@
     (parse-sum-expression lst)
 )
 
+(defun replace-value-in-char-list (lst n)
+    (map 'list (lambda (x) (if (eq x #\n) (digit-char n) x)) lst)
+)
+
 (print(explode *number*))
 (print(lexer(explode *number*)))
 (print(parse-expression(lexer(explode *number*))))
+(print(replace-value-in-char-list (explode *nstring*) 5))
 
 (defun summationExample1 (x)
     (/ (* (+ x 1) x) 2))
